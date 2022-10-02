@@ -9,7 +9,7 @@ const timQuotes= [
 "tim is from oklahoma, if you didnt know that, dont worry, he'll tell you",
 "just a random reminder to love tim.... LOVE HIM!!!!! , this is the tim bot",
 "tim's birthday is in April, he was born on the same day as Saddam Hussen",
-"if tim "
+"if tim falls in the woods, does he make an insult towards your rocket laegue play?"
 ]
 client.on('ready', () =>{
 console.log('scotts bot is working')
