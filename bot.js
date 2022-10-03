@@ -4,37 +4,50 @@ const Discord =require('discord.js')
 const client = new Discord.Client()
 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 const timQuotes= [
-"this is a reminder that Tim will talk. He will talk alot. I am the tim bot",
+"this is a reminder that Tim will talk. He will talk alot.",
 "once tim ate, he got full",
 "tim is from oklahoma, if you didnt know that, dont worry, he'll tell you",
-"just a random reminder to love tim.... LOVE HIM!!!!! , this is the tim bot",
+"just a random reminder to love tim.... LOVE HIM!!!!! ",
 "tim's birthday is in April, he was born on the same day as Saddam Hussen",
 "if tim falls in the woods, does he make an insult towards your rocket laegue play?",
 "Pogonophobia is the fear of beards, that's funny because charlie blackmon hits bombs on tim",
 "wait.....did you hear that? tim just got a bit older",
-"this isnt tim hate....its tim love, I am the tim bot",
+"this isnt tim hate....its tim love",
 "give tim 50 feet",
-"he's an enchanter, This is the tim bot",
+"he's an enchanter",
 "timmmmmmayyyyyyyy!!!!!!",
 "tim bot is the future. I am the UNIVERSE!!!!!"
 
 ]
 const heroQuotes= [
-"psssst, hail Hydra",
-"hero bot is the future. I am the UNIVERSE!!!!!",
-"You Either Die A Hero Or Live Long Enough To See Yourself Become The Villain.",
-"Don't Be What They Made You.",
-"If You're Nothing Without The Suit, Then You Shouldn't Have It.",,
-"Just Because Someone Stumbles And Loses Their Path, Doesn't Mean They're Lost Forever.",
-"It's Not Who I Am Underneath, But What I Do That Defines Me.",
-"and I.....am......Hero Bot",
-"I Can Do This All Day."
+"'psssst, hail Hydra'",
+"'hero bot is the future. I am the UNIVERSE!!!!!'",
+"'You Either Die A Hero Or Live Long Enough To See Yourself Become The Villain.'",
+"'Don't Be What They Made You.'",
+"'If You're Nothing Without The Suit, Then You Shouldn't Have It.'",
+"'Just Because Someone Stumbles And Loses Their Path, Doesn't Mean They're Lost Forever.'",
+"'It's Not Who I Am Underneath, But What I Do That Defines Me.'",
+"'and I.....am......Hero Bot'",
+"'I Can Do This All Day.'"
 
-
-
-
-
-
+]
+const hbot = [
+     "-this is the herobot",
+     "-this is the herobot",
+     "-this is the herobot",
+     "-from: your friendly neighborhood herobot",
+     "-from: your friendly neighborhood herobot",
+     "-herobot is the way",
+     "-herobot is a mod example exclusively for BALLZ IN HOLEZ by: XxRopadopexX"
+]
+const tbot = [
+     "-hey Bih Sauce, timbot here",
+     "-one day timbot will reign supreme",
+     "-I am the timbot",
+     "-I am the timbot",
+     "-timbot, its french, bitch",
+     "-this is timbot",
+     "-this is timbot"
 ]
 client.on('ready', () =>{
 console.log('scotts bot is working')
@@ -42,12 +55,16 @@ console.log('scotts bot is working')
 client.on('message', async (message)=>{
  let msg = message.content
   if(msg.includes('hero')===true && message.author.bot === false){
-       await message.channel.send(heroQuotes[random(0,heroQuotes.length)])
-
+       await message.channel.send(heroQuotes[random(0,heroQuotes.length-1)]+ " "+  hbot[random(0,hbot.length)] )
   }
-  
+  if(msg.includes('tim')===true && message.author.bot === false){
+     await message.channel.send(timQuotes[random(0,tbot.length)]+ " " + tbot[random(0,tbot.length)])
+
+}
+  if(msg.includes('bot version')===true && message.author.bot === false){
+     await message.channel.send('bih Bot v0.0.4')
+
+}
 })
 
-
- 
 client.login(process.env.d_token)
