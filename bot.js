@@ -31,6 +31,11 @@ const heroQuotes= [
 "'I Can Do This All Day.'"
 
 ]
+const bQuotes =[
+     "Brandon says...'wash your hands'",
+     "buuuuhhhhhhdy!"
+]
+const bbot =["-snagz service anouncement"]
 const hbot = [
      "-this is the herobot",
      "-this is the herobot",
@@ -53,6 +58,7 @@ client.on('ready', () =>{
 console.log('scotts bot is working')
 })
 client.on('message', async (message)=>{
+     console.log(message.author)
  let msg = message.content
   if(msg.includes('hero')===true && message.author.bot === false){
        await message.channel.send(heroQuotes[random(0,heroQuotes.length-1)]+ " "+  hbot[random(0,hbot.length)] )
@@ -61,10 +67,33 @@ client.on('message', async (message)=>{
      await message.channel.send(timQuotes[random(0,tbot.length)]+ " " + tbot[random(0,tbot.length)])
 
 }
+  if(msg.includes('snag')===true && message.author.bot === false){
+     await message.channel.send(bQuotes[random(0,bbot.length)]+ " " + bbot[random(0,bbot.length)])
+
+}
   if(msg.includes('bot version')===true && message.author.bot === false){
      await message.channel.send('bih Bot v0.0.4')
 
 }
+if(msg.includes('hello bot')===true && message.author.bot === false){
+     await message.channel.send('hi there, would you like to know what I can do?')
+  
+
+}
 })
 
+
+
+client.on('interactionCreate', async (interaction)=>{
+     if(!interaction.isCommand()){
+          return
+     }
+     const {commandName, options}= interaction
+     if (commandName ==='ping'){
+          interaction.reply({
+               content:'pong',
+               ephemeral:true
+          })
+     }
+})
 client.login(process.env.d_token)
