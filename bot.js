@@ -58,21 +58,24 @@ client.on('ready', () =>{
 console.log('scotts bot is working')
 })
 client.on('message', async (message)=>{
-     console.log(message.author)
- let msg = message.content
+     
+    // console.log(message.author)
+ let msg = message.content.toLowerCase()
   if(msg.includes('hero')===true && message.author.bot === false){
        await message.channel.send(heroQuotes[random(0,heroQuotes.length-1)]+ " "+  hbot[random(0,hbot.length)] )
   }
-  if(msg.includes('tim')===true && message.author.bot === false){
-     await message.channel.send(timQuotes[random(0,tbot.length)]+ " " + tbot[random(0,tbot.length)])
+ 
 
-}
+//   if(msg.includes("tim")===true && message.author.bot === false){
+//      await message.channel.send(timQuotes[random(0,tbot.length)]+ " " + tbot[random(0,tbot.length)])
+
+// }
   if(msg.includes('snag')===true && message.author.bot === false){
      await message.channel.send(bQuotes[random(0,bbot.length)]+ " " + bbot[random(0,bbot.length)])
 
 }
   if(msg.includes('bot version')===true && message.author.bot === false){
-     await message.channel.send('bih Bot v0.0.4')
+     await message.channel.send('bih Bot v0.0.5')
 
 }
 if(msg.includes('hello bot')===true && message.author.bot === false){
@@ -80,20 +83,43 @@ if(msg.includes('hello bot')===true && message.author.bot === false){
   
 
 }
-})
+if(msg.includes('#badbot')===true && message.author.bot === false){
+     await message.channel.send('Chill, Im fucking trying over here!!')
+  
+
+}
+if(msg.includes('#goodbot')===true && message.author.bot === false){
+     await message.channel.send('Nice!!! You wanna head over to my place later?')
+  
+
+}
+if(msg.includes('#commands')===true && message.author.bot === false){
+     await message.channel.send('I can do a limited number of things right now: \n...\nI listen to keywords like:\n"hello bot"\n"bot version"\n...\nI fire a response when I hear:\n "tim","snag",and "hero"\n...\n try using a command with a hastag\n "#goodbot","#badbot", or"#sp"\n...\nMore to come!!')
+  
+
+}
+if (message.content.includes('#sp')) {
+     message.channel.send('Accessing Shawn Points \n...Who gets the point?')/**/.then(() => {
+       message.channel.awaitMessages(response => response.content, {
+         max: 1,
+         time: 30000,
+         errors: ['time'],
+       }).then(collected => {
+         const name = collected.first().content;
+         message.channel.send(`How bad was it? How many points did ${name} score??`).then(() => {
+           message.channel.awaitMessages(response => response.content, {
+             max: 1,
+             time: 30000,
+             errors: ['time'],
+           }).then(collected => {
+             const points = collected.first().content;
+             message.channel.send(`${name} will receive ${100-points} Shawn Points! \n...\nDo Better ${name}`);
+           });
+         });
+       });
+     });
+}})
 
 
 
-client.on('interactionCreate', async (interaction)=>{
-     if(!interaction.isCommand()){
-          return
-     }
-     const {commandName, options}= interaction
-     if (commandName ==='ping'){
-          interaction.reply({
-               content:'pong',
-               ephemeral:true
-          })
-     }
-})
 client.login(process.env.d_token)
