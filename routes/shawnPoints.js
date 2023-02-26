@@ -21,9 +21,9 @@ async function confirmuser(data){
         body:data
     },(err,response,body)=>{
         if(err){
-            console.log(err)
+            console.log("confirmUser() error: "+err)
         }
-        console.log(body)
+        console.log("shawnpoints.js: data "+data)
     })
 }
 

@@ -9,38 +9,41 @@ const sp = require('./routes/shawnPoints')
 const request = require('request')
 const { Session } = require('inspector')
 const { channel } = require('diagnostics_channel')
-//app.use(quoteRouter)
-
+const inc = (zzy,zzz)=>{zzy.includes(zzz)}
 client.on('ready', () =>{
 console.log('scotts bot is working')
 })
 client.on('message', async (message)=>{
  let msg = message.content.toLowerCase()
-  if(msg.includes('hero')===true && message.author.bot === false){
+
+ ////////bot checker
+if(message.author.bot===false){
+  /////
+  if(msg.includes('hero')===true){
        await message.channel.send(quotes.heroQuotes[random(0,quotes.heroQuotes.length-1)]+ " "+  quotes.hbot[random(0,quotes.hbot.length)] )
   }
-//   if(msg.includes("tim")===true && message.author.bot === false){
-//      await message.channel.send(quotes.timQuotes[random(0,quotes.tbot.length)]+ " " + quotes.tbot[random(0,quotes.tbot.length)])
-// }
-  if(msg.includes('snag')===true && message.author.bot === false){
+  if(msg.includes("tim")===true && message.author.bot === false){
+     await message.channel.send(quotes.timQuotes[random(0,quotes.tbot.length)]+ " " + quotes.tbot[random(0,quotes.tbot.length)])
+}
+  if(msg.includes('snags')===true){
      await message.channel.send(quotes.bQuotes[random(0,quotes.bbot.length)]+ " " + quotes.bbot[random(0,quotes.bbot.length)])
 }
-  if(msg.includes('bot version')===true && message.author.bot === false){
+  if(msg.includes('bot version')===true){
      await message.channel.send('bih Bot v0.0.5')
 }
-if(msg.includes('hello bot')===true && message.author.bot === false){
+if(msg.includes('hello bot')===true){
      await message.channel.send('hi there, would you like to know what I can do? type in #commands')
 }
-if(msg.includes('#badbot')===true && message.author.bot === false){
+if(msg.includes('#badbot')===true){
      await message.channel.send('Chill, Im fuckin trying over here!!')
 }
-if(msg.includes('#goodbot')===true && message.author.bot === false){
+if(msg.includes('#goodbot')===true){
      await message.channel.send('Nice!!! You wanna head over to my place later?')
 }
-if(msg.includes('#commands')===true && message.author.bot === false){
+if(msg.includes('#commands')===true){
      await message.channel.send('I can do a limited number of things right now: \n...\nI listen to keywords like:\n"hello bot"\n"bot version"\n...\nI fire a response when I hear:\n "tim","snag",and "hero"\n...\n try using a command with a hastag\n "#goodbot","#badbot", or"#sp"\n...\nMore to come!!')
 }
-if (message.content=='#sp'){
+if (msg=='#sp'){
      message.channel.send('Accessing Shawn Points \n...Type "@" and find the player to assign Shawn Points')
      .then(() => {
        message.channel.awaitMessages(response => response.content, {
@@ -50,17 +53,12 @@ if (message.content=='#sp'){
        })
        .then(collected => {
          const named = collected.first().content;
-         const name = named.replace(/|@<>|/g,'')
-     
-        //console.log(playerExists)
-        console.log(name)
-        console.log(named)
+         const data = named.slice(2,20)     
+    sp.confirmuser(data)
+     console.log("bot.js #sp data: "+ data)
        })
-//sp.postFromDiscord(data)
-
-           });
-      
-       };
+      });      
+   };
    
 
 if (message.content.includes('#playthegame')) {
@@ -102,6 +100,7 @@ return
       sp.postFromDiscord(data)
       //console.log(message.author)
     };
+  }
   })
 
 client.login(process.env.d_token)

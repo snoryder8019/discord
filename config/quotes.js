@@ -4,6 +4,8 @@ const quotes = {
 timQuotes: [
     "this is a reminder that Tim will talk. He will talk alot.",
     "once tim ate, he got full",
+    "that ball is pregnant",
+    "Pete! Baby's crying",
     "tim is from oklahoma, if you didnt know that, dont worry, he'll tell you",
     "just a random reminder to love tim.... LOVE HIM!!!!! ",
     "tim's birthday is in April, he was born on the same day as Saddam Hussen",
@@ -27,7 +29,6 @@ heroQuotes:[
 "'and I.....am......Hero Bot'",
 "'I Can Do This All Day.'"
 ],
-
 bQuotes :[
      "Brandon says...'wash your hands'",
      "buuuuhhhhhhdy!"
@@ -36,7 +37,7 @@ spQuotes :[
     "How bad was it? "
 ],
 bbot :[
-    "-snagz service anouncement"
+    "-snags service anouncement"
 ],
 hbot : [
      "-this is the herobot",
